@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Book an Appointment</title>
+    <style>
+        .container {
+            height: 73vh;
+            width: 39vw;
+            margin-left: 31em;
+            justify-content: center;
+            margin-top: 2em;
+        }
+
+        h4 {
+            margin-left: 25em;
+    margin-top: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Book a 45-min Appointment</h4>
+    <div class="container">
+        <form method="POST" >
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="speciality" class="form-label">Required speciality</label>
+                <input type="text" class="form-control" id="speciality" name="speciality">
+            </div>
+            <div class="mb-3">
+                <label for="dateap" class="form-label">Date of Appointment</label>
+                <input type="date" class="form-control" id="dateap" name="dateap">
+            </div>
+            <div class="mb-3">
+                <label for="start_time" class="form-label">Start time of Appointment</label>
+                <input type="time" class="form-control" id="start_time" name="start_time">
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

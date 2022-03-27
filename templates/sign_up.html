@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Welcome to Sign up Page!</title>
+    <style>
+        .container {
+            height: 73vh;
+            width: 39vw;
+            margin-left: 31em;
+            justify-content: center;
+            margin-top: 1em;
+        }
+
+        h3 {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.4em;
+            font-size: 31px;
+            font-family: sans-serif;
+            letter-spacing: 3px;
+            margin-left: 27px;
+            margin-bottom: 33px;
+        }
+
+        input {
+            width: 16vw !important;
+        }
+
+        .lft {
+            float: left;
+        }
+
+        .rgt {
+            float: right;
+        }
+
+        .btn {
+            width: 8vw;
+            margin-top: 4em;
+            margin-left: 15em;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>This is sign up page</h3>
+    <div class="container">
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if messages %}
+            <div class="mesg">
+                {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="mb-3 lft">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+            </div>
+            <div class="mb-3 rgt">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lname" name="lname" required>
+            </div>
+            <div class="mb-3 rgt">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="mb-3 lft">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3 rgt">
+                <label for="pass1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="pass1" id="pass1" required>
+            </div>
+            <div class="mb-3 lft">
+                <label for="pass2" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="pass2" id="pass2" required>
+            </div>
+            <div class="mb-3 rgt">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" name="address" id="address" required>
+            </div>
+            <div class="mb-3 lft">
+                <label class="form-label" for="image">Add Profile Photo: </label>
+                <input class="form-control" type="file" name="image" id="image">
+            </div>
+            <div class="mb-3 lft">
+                <label for="atype" class="form-label">Account Type</label>
+                <select class="form-select" name="atype" id="atype">
+                    <option value="">Select the option</option>
+                    <option value="Patient">Patient</option>
+                    <option value="Doctor">Doctor</option>
+                  </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+    </div>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</html>

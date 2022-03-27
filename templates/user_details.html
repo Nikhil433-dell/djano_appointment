@@ -1,0 +1,109 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>User Details</title>
+    <style>
+        .container {
+            justify-content: center;
+            margin-top: 6vh;
+            border: 1px solid black;
+            padding-top: 43px;
+            padding-bottom: 51px;
+            min-width: 41vw;
+            border-radius: 21px;
+            height: 83vh;
+
+        }
+
+        .btn {
+            position: relative;
+    top: 24vh;
+    right: 14vw;
+        }
+
+        img {
+
+            margin-top: 4vh;
+            width: 14vw;
+            height: 22vh;
+            margin-left: 8vw;
+            border-radius: 31px;
+            background-size: cover;
+
+        }
+
+        h4 {
+            margin-left: 5vw;
+            font-size: 29px;
+        }
+
+        .d-flex {
+            float: right;
+    margin-right: 18vw;
+        }
+
+        .lft {
+            float: left;
+            margin-right: 10vw;
+        }
+
+        .rgt {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% if user.type == "Patient" %}
+        <h4>Welcome Patient {{user.user.username}}</h4>
+        {% else %}
+        <h4>Welcome Doctor {{user.user.username}}</h4>
+
+        {% endif %}
+        {% if user.photo %}
+        <img src="{{user.photo.url}}" alt="user" srcset="">
+
+        {% else %}
+
+        <img src="{% static '/img/user.jpg' %}" alt="user" srcset="">
+        {% endif %}
+        <a href="/logout">
+            <button type="button" class="btn btn-danger">Logout</button>
+        </a>
+        <div class="d-flex position-relative">
+            <div class="lft" >
+                <h6 class="mt-0">Username: </h6>{{ user.user.username }}
+                <hr>
+                <h6 class="mt-0">First Name: </h6>{{ user.user.first_name }}
+                <hr>
+                <h6 class="mt-0">Last Name: </h6> {{ user.user.last_name }}
+                <hr>
+            </div>
+            <div class="rgt">
+
+                <h6 class="mt-0">Email: </h6> {{ user.user.email }}
+                <hr>
+                <h6 class="mt-0">Account type: </h6> {{ user.type }}
+                <hr>
+                <h6>Address: </h6> {{ user.address }}
+                <hr>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</html>

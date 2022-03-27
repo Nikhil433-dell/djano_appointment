@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Blogs from Doctors</title>
+    <style>
+        .card-img-top {
+            width: 16rem;
+            margin: 18px;
+        }
+
+        .card {
+            width: 57rem;
+            margin-top: 5vh;
+            margin-left: 16vw;
+        }
+
+        .frb {
+            margin-left: 16vw;
+            margin-top: 27px;
+            font-size: 28px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' profile.id %}">Navbar</a>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/user_details/{{profile.id}}">Profile details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        {% if profile.type == "Doctor" %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_blog' profile.id %}">Create new blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'drafted_blog' profile.id %}">Drafted blogs</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h4 class="frb">From the blogs</h4>
+    {% for items in blog %}
+    <div class="card">
+        <img src="{{items.image.url}}"
+        class="card-img-top" alt="photo">
+        <div class="card-body">
+            <h5 class="card-title">{{items.title}}</h5>
+            <p class="card-text">
+                {{ items.summary|truncatewords:15 }}
+            </p>
+                <a href="{% url 'blog_details' items.id %}" class="btn btn-primary">Continue Reading</a>
+            </div>
+        </div>
+        {% endfor %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</html>
